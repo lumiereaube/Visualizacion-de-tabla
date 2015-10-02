@@ -1,0 +1,137 @@
+PFont normal; 
+PFont bold;
+PFont normal2;
+Table footprint;
+PImage drop;
+PImage corn;
+PImage wheat;
+PImage apple;
+PImage beef;
+PImage beer;
+PImage cheese;
+PImage chicken;
+PImage coconut; 
+PImage coffee;
+PImage egg;
+PImage goat; 
+PImage milk;
+PImage orange; 
+PImage pork;
+PImage rice; 
+PImage tea;
+PImage toast;
+PImage wine;
+PImage soybeans;
+PImage sheep;
+PImage potatochips;
+void setup () {
+  size (800, 1000);
+  wheat= loadImage ("Wheat.png"); corn = loadImage ("corn.png"); apple=loadImage("apple.png");
+  beef = loadImage ("beef.png");
+  cheese = loadImage ("cheese.png");
+  rice= loadImage ("rice.png");
+  soybeans = loadImage ("soybeans.png");
+ 
+  orange = loadImage ("orange.png");
+  coconut = loadImage("coconut.png");
+  toast = loadImage ("toast.png");
+  tea = loadImage("tea.png");
+  coffee = loadImage ("coffee.png");
+  wine = loadImage ("wine.png");
+  beer = loadImage("beer.png");
+  potatochips = loadImage ("potatochips.png");
+  milk = loadImage ("milk.png");
+  goat = loadImage ("goat.png");
+  pork = loadImage ("pork.png");
+  sheep= loadImage ("sheep.png");
+  chicken = loadImage ("chicken.png"); 
+  egg = loadImage ("egg.png");
+  
+  
+  
+  drop = loadImage ("drop.png");
+  footprint = loadTable ("Untitled.csv", "header");
+  normal2 = loadFont ("Rockwell-Bold-35.vlw");
+  normal = loadFont ("Rockwell-20.vlw");
+  bold = loadFont ("Rockwell-Bold-24.vlw");
+   println(footprint.getRowCount () + "total rows in table");
+   println(footprint.getString (3,2));
+}
+
+void draw () {
+background(255); 
+
+fill (126,193,250);
+rectMode (CENTER);
+rect (400, 500,800,1000);
+fill (255);
+rect (400,450,700,900);
+
+for (int fila = 0; fila<footprint.getRowCount(); fila=fila+1) 
+{ for (int foot=10; foot<footprint.getInt(fila, 2)/5; foot=foot+10)
+{  //image(drop, foot +(60+ (fila *40)) ,foot+200, 10, 15 ); 
+//image(drop, 100,100 + (fila* 31), 10, 15 );
+
+//de la gota
+image(drop, 338 +foot, foot + (80+ (fila* 31)), 10, 15 );
+
+
+//images from products
+int sp= 320;
+image(corn, sp, 80, 20, 25 );
+image(wheat, sp, 110, 20, 25 );
+image(beef, sp, 80+(31*15), 20, 25 );
+image(cheese, sp, 80+(31*7), 20, 25 );
+image(rice, sp, 80+(31*2), 20, 25 );
+image(soybeans, sp, 80+(31*3), 20, 25 );
+image(apple, sp, 80+(31*4), 20, 25 );
+image(orange, sp, 80+(31*5), 20, 25 );
+image(coconut, sp, 80+(31*6), 20, 25 );
+image(toast, sp, 80+(31*8), 20, 25 );
+image(tea, sp, 80+(31*9), 20, 25 );
+image(coffee, sp, 80+(31*10), 20, 25 );
+image(wine, sp, 80+(31*11), 20, 25 );
+image(beer, sp, 80+(31*12), 20, 25 );
+image(potatochips, sp, 80+(31*13), 20, 25 );
+image(milk, sp, 80+(31*14), 20, 25 );
+image(goat, sp, 80+(31*16), 20, 25 );
+image(pork, sp, 80+(31*17), 20, 25 );
+image(sheep, sp, 80+(31*18), 20, 25 );
+image(chicken, sp, 80+(31*19), 20, 25 );
+image(egg, sp, 80+(31*20 ), 20, 25 );
+
+textFont(normal2,35); fill(126,193,250);
+noStroke ();
+int x = 0;
+int y= 150;
+pushMatrix();
+  translate(x,y);
+  rotate(PI+HALF_PI);
+ textAlign (CENTER);
+ text("WATER FOOTPRINT PER PRODUCT",x-250,y); 
+ 
+   popMatrix();
+textFont(normal,15); fill(100); 
+
+   textAlign(RIGHT);
+ text(footprint.getString(fila, 1),300 +fila, 100 + (fila* 31));
+ textFont(normal,15); fill(200); 
+
+  text(footprint.getString(fila, 2), 560 +fila, 100 + (fila*31));
+
+  //popMatrix();
+  
+/*  int x1 = 0;
+int y1= 350;
+pushMatrix();
+  translate(x1,y1);
+  rotate(HALF_PI);
+  textAlign(RIGHT);
+  translate(-x1,-y1);
+text(footprint.getString(fila, 2),  x +(fila*2), y + (fila* -40));
+  popMatrix();
+text("Los Hombres Más Ricos del Mundo",200,50); 
+text("En Millones De Dolares",280,650); */
+}
+}
+}
